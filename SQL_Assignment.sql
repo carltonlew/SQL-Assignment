@@ -34,13 +34,21 @@ drop column description;
 -- 4a. List the last names of actors, as well as how many actors have that last name.
 select count(actor_id), last_name from actor group by last_name;
 
+
 -- 4b. List last names of actors and the number of actors who have that last name, but only for names that are shared by at least two actors
+ 
 
 
 -- 4c. The actor HARPO WILLIAMS was accidentally entered in the actor table as GROUCHO WILLIAMS. Write a query to fix the record.
+update actor
+set first_name='HARPO'
+where first_name='GROUCHO' and last_name='WILLIAMS';
 
-
--- 4d. Perhaps we were too hasty in changing GROUCHO to HARPO. It turns out that GROUCHO was the correct name after all! In a single query, if the first name of the actor is currently HARPO, change it to GROUCHO.
+-- 4d. Perhaps we were too hasty in changing GROUCHO to HARPO. It turns out that GROUCHO was the correct name after all! 
+-- In a single query, if the first name of the actor is currently HARPO, change it to GROUCHO.
+update actor
+set first_name='GROUCHO'
+where first_name='HARPO';
 
 
 -- 5a. You cannot locate the schema of the address table. Which query would you use to re-create it?
